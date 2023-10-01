@@ -8,8 +8,8 @@
 </head>
 <body>
     <script>
-        const width = 928;
-        const height = 680;
+        const width = 2800;
+        const height = 3000;
 
         const simulation = d3.forceSimulation()
             .force("charge", d3.forceManyBody())
@@ -26,12 +26,13 @@
 
         let link = svg.append("g")
             .attr("stroke", "#999")
-            .attr("stroke-opacity", 0.6)
+            .attr("stroke-opacity", 0.1)
+            .attr("stroke-width", 0.3)
             .selectAll("line");
 
         let node = svg.append("g")
             .attr("stroke", "#fff")
-            .attr("stroke-width", 1.5)
+            .attr("stroke-width", 0)
             .selectAll("circle");
 
         function ticked() {
@@ -61,7 +62,7 @@
             node = node
                 .data(nodes, d => d.id)
                 .join(enter => enter.append("circle")
-                    .attr("r", 5)
+                    .attr("r", .5)
                     .call(drag(simulation))
                     .call(node => node.append("title").text(d => d.id)));
 
